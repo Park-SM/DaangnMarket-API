@@ -10,7 +10,7 @@ const db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// Model 생성
+db.Address = require("./Address")(sequelize, Sequelize);
 
 // Model ForeignKey 지정
 
