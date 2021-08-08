@@ -41,9 +41,9 @@ const PORT = "";
 const DB = "";
 const ID = "";
 const PW = "";
-const logging = false | true;
+const LOGGING = false | true;
 
-module.exports = { HOST, PORT, DB, ID, PW };
+module.exports = { HOST, PORT, DB, ID, PW, LOGGING };
 </pre>
 
 
