@@ -5,7 +5,7 @@
 API 설계문서 엑셀 [다운로드](https://github.com/Park-SM/DaangnMarket-API/files/6950422/API.xlsx)
 
 
-## Description
+## Setup
 새로운 디렉토리 "config"를 생성 후 아래의 두 파일을 생성하고 값 입력 후 사용하기.
 
 ### 1. config.js
