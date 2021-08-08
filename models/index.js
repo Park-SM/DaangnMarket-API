@@ -3,7 +3,8 @@ const Sequelize = require("sequelize")
 const sequelize = new Sequelize(properties.DB, properties.ID, properties.PW, {
     dialect: 'mysql',
     host: properties.HOST,
-    port: properties.PORT
+    port: properties.PORT,
+    logging: properties.LOGGING
 });
 
 const db = {};

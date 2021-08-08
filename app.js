@@ -9,7 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(conf.SESSION);
 
-app.use("/",    routers.indexRouter);
+app.use("/",            routers.indexRouter);
+app.use("/address",     routers.addressRouter);
 
 sequelize.sync()
     .then(_ => app.listen(conf.PORT, () => console.log(`Starting server at ${conf.PORT} port.`)))
