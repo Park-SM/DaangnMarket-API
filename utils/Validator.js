@@ -6,6 +6,6 @@ exports.query = (...requiredQuery) => {
             if (!req.query[rq]) validate = false;
         }
 
-        if (validate) next(); else  res.sendStatus(400);
+        if (validate) next(); else res.sendStatus(400);
     }
 }
