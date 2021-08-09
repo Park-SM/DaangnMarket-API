@@ -1,4 +1,5 @@
 module.exports = {
-    indexRouter: require("./IndexRouter"),
-    addressRouter: require("./AddressRouter")
+    indexRouter:    require("./IndexRouter"),
+    userRouter:    require("./UserRouter"),
+    addressRouter:  require("./AddressRouter")
 };

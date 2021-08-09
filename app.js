@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(conf.SESSION);
 
 app.use("/",            routers.indexRouter);
+app.use("/user",        routers.userRouter);
 app.use("/address",     routers.addressRouter);
 
 sequelize.sync()
