@@ -41,10 +41,20 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             defaultValue: 0
         },
-        refershToken: {
+        refreshToken: {
             type: Sequelize.STRING,
             allowNull: true
-        }
+        }// },
+        // createdAt: {
+        //     type: 'TIMESTAMP',
+        //     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        //     allowNull: false
+        //   },
+        //   updatedAt: {
+        //     type: 'TIMESTAMP',
+        //     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        //     allowNull: false
+        //   }
     }, {
         sequelize,
         tableName: 'user'
