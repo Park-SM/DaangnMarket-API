@@ -21,15 +21,19 @@ exports.signToken = (userId) => {
  * Token이 아예 없으면 403 에러코드를 리턴하고 Token이
  * 만료되거나 유효하지 않으면 401 에러코드를 리턴한다.
  * 
- * Token이 유효하면 Payload를 Decoding해서
- * User의 Primary Key를 req에 user_id Key로 입력한다.
+ * AccessToken일 경우, Token이 유효하면 Payload를
+ * Decoding해서 User의 Primary Key를 req에 user_id Key로
+ * 입력 후 다음 middleware호출. RefreshToke일 경우 아무
+ * 동작 없이 다음 middleware를 호출한다.
  */
 exports.checkToken = (req, res, next) => {
     const accessToken = req.header("X-AUTH-TOKEN");
     if (accessToken) {
         const decoded = verifyToken(accessToken);
         if (decoded) {
-            req.user_id = decoded.id;
+            if (decoded.id) {
+                req.user_id = decoded.id;
+            }
             next(); 
         } else {
             res.sendStatus(401);
