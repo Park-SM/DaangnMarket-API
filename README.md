@@ -16,16 +16,18 @@ API 설계문서 엑셀 [다운로드](https://github.com/Park-SM/DaangnMarket-A
 
 >내용
 <pre>
-const _session = require("express-session");
-const HOST = "";
-const PORT = "";
-const SESSION = _session({
+exports.HOST = "";
+exports.PORT = "";
+exports.SESSION = require("express-session")({
     secret: "",
     resave: false,
     saveUninitialized: true
 });
 
-module.exports = { HOST, PORT, SESSION };
+exports.JWT_SECRET = "";
+exports.JWT_A_TOKEN_EXPIRED_IN = "";
+exports.JWT_R_TOKEN_EXPIRED_IN = "";
+exports.JWT_ISSUER = "";
 </pre>
 
 ### 2. mysql-properties.js
@@ -36,14 +38,12 @@ module.exports = { HOST, PORT, SESSION };
 
 >내용
 <pre>
-const HOST = "";
-const PORT = "";
-const DB = "";
-const ID = "";
-const PW = "";
-const LOGGING = true | false;
-
-module.exports = { HOST, PORT, DB, ID, PW, LOGGING };
+exports.HOST = "";
+exports.PORT = "";
+exports.DB = "";
+exports.ID = "";
+exports.PW = "";
+exports.LOGGING = true | false;
 </pre>
 
 
