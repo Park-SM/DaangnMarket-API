@@ -2,7 +2,8 @@
 안드로이드 당근마켓 클론 앱을 위한 API 서버
 
 ## #API Document
-API 설계문서 엑셀 [다운로드](https://github.com/Park-SM/DaangnMarket-API/files/6950422/API.xlsx)
+API 설계문서 엑셀 [다운로드](https://github.com/Park-SM/DaangnMarket-API/files/6976738/API.xlsx)
+
 
 
 ## #Setup
