@@ -28,7 +28,6 @@ exports.getAround = async (req, res) => {
             },
         );
         res.send({
-            result: "success",
             latitude,
             longitude,
             nextPage: page + 1,
@@ -49,13 +48,12 @@ exports.getSearch = async (req, res) => {
 
     Address.findAll({
         where: {
-            address: { [Op.like]:`%${search}%`}
+            address: { [Op.like]:`%${search}%` }
         },
         offset: page * size,
         limit: size
     }).then(results => {
         res.send({
-            result: "success",
             search: search,
             nextPage: page + 1,
             pageSize: size,
@@ -92,7 +90,6 @@ exports.getLocation = async (req, res) => {
             },
         );
         res.send({
-            result: "success",
             latitude,
             longitude,
             radius,

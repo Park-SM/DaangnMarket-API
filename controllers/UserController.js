@@ -7,7 +7,7 @@ exports.signUser = async (req, res) => {
     const email     = req.body.email;
     const address   = parseInt(req.body.address);
 
-    let userId = -1;
+    let userId = null;
     let tokens = null;
     User.findOrCreate({
         where: { email },
@@ -21,7 +21,7 @@ exports.signUser = async (req, res) => {
         return User.update({ refreshToken: tokens.refreshToken }, { where: { id: { [Op.eq]: userId }}});
     })
     .then(cnt => {
-        if (cnt < 1 || userId == -1) throw "NotFoundException";
+        if (cnt < 1 || !userId) throw "NotFoundException";
 
         res.send({
             accessToken: tokens.accessToken,
