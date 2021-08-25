@@ -3,27 +3,34 @@ const conf  = require("../config/config");
 const jwt   = require("../utils/Jwt");
 const Op    = require("sequelize").Op;
 
-exports.signUser = async (req, res) => {
-    const email     = req.body.email;
+exports.login = async (req, res) => {
+    const phone     = req.body.phone;
     const address   = parseInt(req.body.address);
+
+    /**
+     * 기존에 존재하는 회원이면 existing 값을 false로 res.send하고,
+     * 앱에서는 계정에 소유권을 확인해야함. 하지만 이 부분은 구현하지 않을 예정.
+     * 여기에서 기존에 존재하는 회원인지 확인하는 소스 작성.
+     */
 
     let userId = null;
     let tokens = null;
     User.findOrCreate({
-        where: { email },
+        where: { phone },
         defaults: {
             village1: address
         }
     })
     .then(([user, _]) => {
         userId = user.dataValues.id;
-        tokens = jwt.signToken(userId); 
+        tokens = jwt.signToken(userId);
         return User.update({ refreshToken: tokens.refreshToken }, { where: { id: { [Op.eq]: userId }}});
     })
     .then(cnt => {
         if (cnt < 1 || !userId) throw "NotFoundException";
 
         res.send({
+            existing: true,
             accessToken: tokens.accessToken,
             expiredIn: conf.JWT_A_TOKEN_EXPIRED_IN,
             refreshToken: tokens.refreshToken,

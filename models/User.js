@@ -5,8 +5,8 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING(12),
             allowNull: true
         },
-        email: {
-            type: Sequelize.STRING(120),
+        phone: {
+            type: Sequelize.STRING(11),
             allowNull: false
         },
         village1: {
