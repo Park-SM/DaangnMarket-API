@@ -51,7 +51,7 @@ function verifyToken(token) {
             case "TokenExpiredError":
                 console.error('expired token');
                 break;
-            case "TokenExpiredError":
+            case "UnauthorizedError":
                 console.error("invalid token");
                 break;
             default:

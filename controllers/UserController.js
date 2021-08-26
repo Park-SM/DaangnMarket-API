@@ -50,6 +50,40 @@ exports.login = async (req, res) => {
     })
 }
 
+exports.loginWithToken = async (req, res) => {
+    const userId = req.user_id;
+
+    let tokens = null;
+    User.findOne({ where: { id: { [Op.eq]: userId}}})
+        .then(user => {
+            if (!user) throw "NotFoundException";
+
+            tokens = jwt.signToken(userId);
+            return User.update({ refreshToken: tokens.refreshToken }, { where: { id: { [Op.eq]: userId }}});
+        })
+        .then(cnt => {
+            if (cnt < 1) throw "NotFoundException";
+
+            res.send({
+                accessToken: tokens.accessToken,
+                expiredIn: conf.JWT_A_TOKEN_EXPIRED_IN,
+                refreshToken: tokens.refreshToken,
+                refreshToken_expiredIn: conf.JWT_R_TOKEN_EXPIRED_IN
+            });
+        })
+        .catch(error => {
+            console.error(error);
+            switch(error) {
+                case "NotFoundException":
+                    res.sendStatus(404);
+                    break;
+                default:
+                    res.sendStatus(500);
+                    break;
+            }
+        });
+}
+
 exports.refreshToken = async (req, res) => {
     const refreshToken = req.header("X-AUTH-TOKEN");
     if (refreshToken) {
