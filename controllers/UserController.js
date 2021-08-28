@@ -40,9 +40,6 @@ exports.login = async (req, res) => {
     .catch(error => {
         console.error(error);
         switch (error) {
-            case "NotFoundException": 
-                res.sendStatus(404);
-                break;
             default:
                 res.sendStatus(500);
                 break;
@@ -75,7 +72,7 @@ exports.loginWithToken = async (req, res) => {
             console.error(error);
             switch(error) {
                 case "NotFoundException":
-                    res.sendStatus(404);
+                    res.sendStatus(422);
                     break;
                 default:
                     res.sendStatus(500);
@@ -85,30 +82,28 @@ exports.loginWithToken = async (req, res) => {
 }
 
 exports.refreshToken = async (req, res) => {
-    const refreshToken = req.header("X-AUTH-TOKEN");
-    if (refreshToken) {
-        User.findOne({where: {refreshToken: {[Op.eq]: refreshToken}}})
-        .then(user => {
-            if (!user) throw "NotFoundException";
+    const refreshToken = req.header("X-AUTH-TOKEN");    // Jwt Middleware에서 undefine 아닌지 확인 함
+    
+    User.findOne({where: {refreshToken: {[Op.eq]: refreshToken}}})
+    .then(user => {
+        if (!user) throw "NotFoundException";
 
-            const tokens = jwt.signToken(user.id);
-            res.send({
-                accessToken: tokens.accessToken,
-                expiredIn: conf.JWT_A_TOKEN_EXPIRED_IN
-            });
-        })
-        .catch(error => {
-            console.error(error);
-            switch(error) {
-                case "NotFoundException":
-                    res.sendStatus(404);
-                    break;
-                default:
-                    res.sendStatus(500);
-                    break;
-            }
+        const tokens = jwt.signToken(user.id);
+        res.send({
+            accessToken: tokens.accessToken,
+            expiredIn: conf.JWT_A_TOKEN_EXPIRED_IN
         });
-    } else {
-        res.sendStatus(403);
-    }
+    })
+    .catch(error => {
+        console.error(error);
+        switch(error) {
+            case "NotFoundException":
+                res.sendStatus(422);
+                break;
+            default:
+                res.sendStatus(500);
+                break;
+        }
+    });
+    
 }

@@ -45,7 +45,7 @@ exports.getSearch = async (req, res) => {
     const search    = req.query.search;
     const page      = parseInt(req.query.page);
     const size      = parseInt(req.query.size);
-Op.iLike
+
     Address.findAll({
         where: {
             address: { [Op.like]:`%${search}%` }
