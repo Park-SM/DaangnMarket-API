@@ -38,3 +38,7 @@ exports.LOGGING = true | false;
 
 ## 3. Tech
 `Node.js` `MVC` `express` `JWT` `Sequelize` `MySQL`
+
+## 4. Client Android App
+본 API를 사용하는 안드로이드 당근마켓 클론 앱이고 아래의 주소에서 확인할 수 있습니다.<br>
+https://github.com/Park-SM/DaangnMarket
