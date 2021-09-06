@@ -2,7 +2,8 @@
 &nbsp;안드로이드 당근마켓 앱을 클론 코딩하며 사용하는 API 저장소 입니다. 앱의 전체적인 기능 구현을 목표로 하기보단 담당한 파트를 공부하고 개발하는 중이며 안드로이드 앱에서 필요한 기능만 우선적으로 구현하고 있습니다.
 
 ## 1. API Document
-API 설계문서 엑셀 파일 &nbsp;[`Download`](https://github.com/Park-SM/DaangnMarket-API/files/7071191/API.xlsx)
+API 설계문서 엑셀 파일 &nbsp;[`Download`](https://github.com/Park-SM/DaangnMarket-API/files/7115735/API.xlsx)
+
 
 ## 2. Setup
 1. 최상위 디렉토리에서 새로운 디렉토리 "config"를 생성합니다.
