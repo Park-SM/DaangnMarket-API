@@ -44,17 +44,7 @@ module.exports = (sequelize, Sequelize) => {
         refreshToken: {
             type: Sequelize.STRING,
             allowNull: true
-        }// },
-        // createdAt: {
-        //     type: 'TIMESTAMP',
-        //     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-        //     allowNull: false
-        //   },
-        //   updatedAt: {
-        //     type: 'TIMESTAMP',
-        //     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-        //     allowNull: false
-        //   }
+        }
     }, {
         sequelize,
         tableName: 'user'

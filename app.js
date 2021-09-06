@@ -12,6 +12,7 @@ app.use(conf.SESSION);
 app.use("/",            routers.indexRouter);
 app.use("/user",        routers.userRouter);
 app.use("/address",     routers.addressRouter);
+app.use("/life",        routers.lifeRouter);
 
 sequelize.sync()
     .then(_ => app.listen(conf.PORT, () => console.log(`Starting server at ${conf.PORT} port.`)))
