@@ -9,5 +9,9 @@ router.get("/posts",
     jwt.checkToken,
     controller.posts
 );
+router.get("/categories",
+    jwt.checkToken,
+    controller.categories
+);
 
 module.exports = router;

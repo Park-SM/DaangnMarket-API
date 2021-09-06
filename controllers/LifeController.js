@@ -1,4 +1,4 @@
-const { sequelize, LifePost } = require("../models");
+const { sequelize, LifePost, LifeCategory } = require("../models");
 const { QueryTypes } = require('sequelize');
 
 exports.posts = async (req, res) => {
@@ -81,4 +81,18 @@ exports.posts = async (req, res) => {
         console.error(e);
         res.sendStatus(500);
     }
+}
+
+exports.categories = async (_, res) => {
+    LifeCategory.findAll()
+    .then(rows => {
+        res.send({
+            count: rows.length,
+            data: rows
+        });
+    })
+    .catch(error => {
+        console.log(error);
+        res.sendStatus(500);
+    });
 }
